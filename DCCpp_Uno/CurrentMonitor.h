@@ -1,9 +1,9 @@
 /**********************************************************************
 
-CurrentMonitor.h
-COPYRIGHT (c) 2013-2016 Gregg E. Berman
+  CurrentMonitor.h
+  COPYRIGHT (c) 2013-2016 Gregg E. Berman
 
-Part of DCC++ BASE STATION for the Arduino
+  Part of DCC++ BASE STATION for the Arduino
 
 **********************************************************************/
 
@@ -13,23 +13,27 @@ Part of DCC++ BASE STATION for the Arduino
 #include "Arduino.h"
 
 #define  CURRENT_SAMPLE_SMOOTHING   0.01
-#define  CURRENT_SAMPLE_MAX         300
 
 #ifdef ARDUINO_AVR_UNO                        // Configuration for UNO
-  #define  CURRENT_SAMPLE_TIME        10
+#define  CURRENT_SAMPLE_TIME        10
 #else                                         // Configuration for MEGA    
-  #define  CURRENT_SAMPLE_TIME        1
+#define  CURRENT_SAMPLE_TIME        1
 #endif
 
-struct CurrentMonitor{
-  static long int sampleTime;
-  int pin;
-  float current;
-  char *msg;
-  CurrentMonitor(int, char *);
-  static boolean checkTime();
-  void check();
+class CurrentMonitor {
+    static long int sampleTime;
+    const int pin;
+    const float maxSamples;
+    const char * const msg;
+    float current;
+  public:
+    CurrentMonitor(int pin, float maxSamples, const char *msg);
+    static boolean checkTime();
+    void check();
+    int getUsedCurrent() // Returns the used portion of available current on a scale of 0-1024
+    {
+      return (int)(1024 * current / maxSamples);
+    }
 };
 
 #endif
-

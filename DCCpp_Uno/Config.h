@@ -15,7 +15,7 @@ Part of DCC++ BASE STATION for the Arduino
 //  1 = POLOLU MC33926 MOTOR SHIELD   (MAX 28V/3A PER CHANNEL)
 //  2 = ARDUINO MOTOR SHIELD + CYTRON (MAX 18V/2A PROGRAMMING & MAX 18V/5A MAIN)
 
-#define MOTOR_SHIELD_TYPE   2
+#define MOTOR_SHIELD_TYPE   0
 
 /////////////////////////////////////////////////////////////////////////////////////
 //

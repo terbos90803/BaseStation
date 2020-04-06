@@ -193,8 +193,8 @@ void showConfiguration();
 volatile RegisterList mainRegs(MAX_MAIN_REGISTERS);    // create list of registers for MAX_MAIN_REGISTER Main Track Packets
 volatile RegisterList progRegs(2);                     // create a shorter list of only two registers for Program Track Packets
 
-CurrentMonitor mainMonitor(CURRENT_MONITOR_PIN_MAIN,"<p2>");  // create monitor for current on Main Track
-CurrentMonitor progMonitor(CURRENT_MONITOR_PIN_PROG,"<p3>");  // create monitor for current on Program Track
+CurrentMonitor mainMonitor(CURRENT_MONITOR_PIN_MAIN,CURRENT_MONITOR_MAX_SAMPLES_MAIN,"<p2>");  // create monitor for current on Main Track
+CurrentMonitor progMonitor(CURRENT_MONITOR_PIN_PROG,CURRENT_MONITOR_MAX_SAMPLES_PROG,"<p3>");  // create monitor for current on Program Track
 
 ///////////////////////////////////////////////////////////////////////////////
 // MAIN ARDUINO LOOP
@@ -557,7 +557,3 @@ void showConfiguration(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-
-
-
-
